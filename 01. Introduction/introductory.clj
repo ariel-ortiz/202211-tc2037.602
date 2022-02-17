@@ -1,4 +1,4 @@
-; Un comentario
+; Problem Set #1
 
 (ns introductory
   (:require [clojure.test :refer [deftest is run-tests]])
