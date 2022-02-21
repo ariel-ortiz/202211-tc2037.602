@@ -7,6 +7,7 @@
 ;----------------------------------------------------------
 ; Problem 1
 (defn gibibytes->bytes
+  "Convert gibibytes input into corresponding bytes."
   [gibibytes]
   (* gibibytes 1024 1024 1024))
 
@@ -28,6 +29,22 @@
   (is (= 100.0 (f2c 212.0)))
   (is (= 0.0 (f2c 32.0)))
   (is (= -40.0 (f2c -40.0))))
+
+;----------------------------------------------------------
+; Problem 3
+
+(defn sign
+  [n]
+  (if (< n 0)
+    -1
+    (if (> n 0)
+      1
+      0)))
+
+(deftest test-sign
+  (is (= -1 (sign -5)))
+  (is (= 1 (sign 10)))
+  (is (= 0 (sign 0))))
 
 ;----------------------------------------------------------
 ; Problem 4
