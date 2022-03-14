@@ -3,6 +3,26 @@
 (ns more-repetitions
   (:require [clojure.test :refer [deftest is run-tests]]))
 
+;----------------------------------------------------------
+; Problem 5
+(defn binary-aux
+  [n]
+  (if (zero? n)
+    []
+    (conj (binary-aux (quot n 2))
+          (rem n 2))))
+
+(defn binary
+  [n]
+  (if (zero? n)
+    ()
+    (seq (binary-aux n))))
+
+(deftest test-binary
+  (is (= () (binary 0)))
+  (is (= '(1 1 1 1 0) (binary 30)))
+  (is (= '(1 0 1 1 0 0 0 0 0 1 0 0 0 0 1 1) (binary 45123))))
+
 
 ;----------------------------------------------------------
 ; Problem 8
@@ -62,5 +82,5 @@
   (is (= '((1) (2) (3) (4) (5)) (pack '(1 2 3 4 5))))
   (is (= '((9 9 9 9 9 9 9 9 9)) (pack '(9 9 9 9 9 9 9 9 9)))))
 
-
+;----------------------------------------------------------
 (run-tests)
