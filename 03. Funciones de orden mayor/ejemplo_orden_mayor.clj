@@ -37,3 +37,20 @@
 (f 1 2 3 4)
 
 ((((f' 1) 2) 3) 4)
+
+(defn my-map
+  ([fun s]
+   (if (empty? s)
+     ()
+     (cons (fun (first s))
+           (my-map fun (rest s)))))
+  ([fun s & a]
+   (let [args (cons s a)]
+     (if (some empty? args)
+       ()
+       (cons (apply fun (my-map first args))
+             (apply my-map fun (my-map rest args)))))))
+
+(my-map * [0 1 2] [3 4 5] [6 7 8 9])
+
+(my-map first [[0 1 2] [3 4 5] [6 7 8]])
